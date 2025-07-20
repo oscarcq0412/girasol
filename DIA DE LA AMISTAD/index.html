@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dedicatoria</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            height: 100vh;
+            perspective: 1000px;
+        }
+
+        /* Fondo espacial con estrellas */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Cometas */
+        .comet {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            animation: comet-move 8s linear infinite;
+        }
+
+        @keyframes comet-move {
+            0% {
+                transform: translateX(-100px) translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px));
+                opacity: 0;
+            }
+        }
+
+        .comet::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50px;
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transform: rotate(-45deg);
+        }
+
+        /* Mensaje 3D */
+        .dedication {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%) rotateX(10deg);
+            text-align: center;
+            z-index: 100;
+        }
+
+        .dedication h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: gradient-shift 3s ease-in-out infinite, float-3d 4s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float-3d {
+            0%, 100% { transform: translateY(0) rotateX(10deg); }
+            50% { transform: translateY(-20px) rotateX(15deg); }
+        }
+
+        /* Contenedor del girasol */
+        .sunflower-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: wind-sway 3s ease-in-out infinite;
+        }
+
+        /* Girasol */
+        .sunflower {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+        }
+
+        /* Centro del girasol */
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #8B4513 0%, #654321 40%, #4a2c17 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) translateZ(20px);
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.5), 0 0 20px rgba(139, 69, 19, 0.5);
+        }
+
+        .center::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #654321 0%, #4a2c17 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* Pétalos */
+        .petal {
+            position: absolute;
+            width: 60px;
+            height: 20px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+            border-radius: 50px 10px;
+            top: 50%;
+            left: 50%;
+            transform-origin: 10px center;
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+            animation: petal-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes petal-glow {
+            0% { box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3); }
+            100% { box-shadow: 0 4px 20px rgba(255, 215, 0, 0.8); }
+        }
+
+        /* Rotación general suave */
+        @keyframes gentle-rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Animación de viento */
+        @keyframes wind-sway {
+            0% { transform: translate(-50%, -50%) rotate(-3deg); }
+            25% { transform: translate(-50%, -50%) rotate(5deg); }
+            50% { transform: translate(-50%, -50%) rotate(-2deg); }
+            75% { transform: translate(-50%, -50%) rotate(6deg); }
+            100% { transform: translate(-50%, -50%) rotate(-3deg); }
+        }
+
+        /* Tallo */
+.stem {
+    position: absolute;
+    bottom: -180px; /* ajusta para que el tallo quede debajo del girasol */
+    left: 50%;
+    width: 8px;
+    height: 250px; /* tallo largo */
+    background: linear-gradient(180deg, #228B22 0%, #006400 100%);
+    transform: translateX(-50%);
+    border-radius: 4px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+}
+
+.leaf {
+    position: absolute;
+    width: 80px;   /* más ancho para hojas grandes */
+    height: 40px;  /* más alto para hojas grandes */
+    background: linear-gradient(45deg, #32CD32 0%, #228B22 100%);
+    border-radius: 40px 10px;
+    animation: stem-leaf-sway 2.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.leaf.left {
+    left: -50px;  /* más alejado del tallo por ser más grandes */
+    bottom: 160px;  /* posición vertical */
+    transform-origin: center right;
+    transform: rotate(-35deg);
+    animation-delay: 0.2s;
+}
+
+.leaf.right {
+    right: -50px;
+    bottom: 130px;
+    transform-origin: center left;
+    transform: rotate(35deg);
+    animation-delay: 0.7s;
+}
+
+@keyframes stem-leaf-sway {
+    0%, 100% { transform-origin: center; }
+    0% { transform: rotate(0deg) rotateZ(-2deg); }
+    50% { transform: rotate(0deg) rotateZ(4deg); }
+    100% { transform: rotate(0deg) rotateZ(-2deg); }
+}
+
+
+        /* Control de audio */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .audio-btn {
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .audio-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Efectos de partículas */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float-particle 6s linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px) scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo de estrellas -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Mensaje de dedicatoria 3D -->
+    <div class="dedication">
+        <h1>Te envio este girasol querida fabri... </h1>
+    </div>
+
+    <!-- Girasol principal -->
+    <div class="sunflower-container">
+        <div class="sunflower" id="sunflower">
+            <!-- Centro del girasol -->
+            <div class="center"></div>
+            
+            <!-- Tallo con 5 hojas -->
+            <div class="stem">
+                  <div class="leaf left"></div>
+                <div class="leaf right"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MUSICA MP3------------------------------------- -->
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="mp3/Yiruma.mp3" type="audio/mpeg">
+
+        Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <script>
+        // Crear estrellas dinámicamente
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numStars = 200;
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3 + 1;
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const duration = Math.random() * 3 + 2;
+                
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = x + '%';
+                star.style.top = y + '%';
+                star.style.animationDuration = duration + 's';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Crear cometas
+        function createComets() {
+            setInterval(() => {
+                const comet = document.createElement('div');
+                comet.className = 'comet';
+                
+                const startX = Math.random() * -200 - 100;
+                const startY = Math.random() * -200 - 100;
+                const duration = Math.random() * 4 + 6;
+                
+                comet.style.left = startX + 'px';
+                comet.style.top = startY + 'px';
+                comet.style.animationDuration = duration + 's';
+                
+                document.body.appendChild(comet);
+                
+                setTimeout(() => {
+                    comet.remove();
+                }, duration * 1000);
+            }, 3000);
+        }
+
+        // Crear pétalos del girasol
+        function createPetals() {
+            const sunflower = document.getElementById('sunflower');
+            const numPetals = 16;
+            
+            for (let i = 0; i < numPetals; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                
+                const angle = (360 / numPetals) * i;
+                const delay = i * 0.1;
+                
+                petal.style.transform = `translate(-10px, -10px) rotate(${angle}deg) translateX(-80px)`;
+                petal.style.animationDelay = delay + 's';
+                
+                sunflower.appendChild(petal);
+            }
+        }
+
+        // Crear partículas flotantes
+        function createParticles() {
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const x = Math.random() * window.innerWidth;
+                const delay = Math.random() * 2;
+                const duration = Math.random() * 3 + 4;
+                
+                particle.style.left = x + 'px';
+                particle.style.animationDelay = delay + 's';
+                particle.style.animationDuration = duration + 's';
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, (duration + delay) * 1000);
+            }, 800);
+        }
+
+        // Auto-inicio de música (sin botón)
+        function autoStartAudio() {
+            const audio = document.getElementById('backgroundMusic');
+            
+            // Intenta reproducir inmediatamente
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Música iniciada automáticamente');
+                }).catch(error => {
+                    console.log('Reproducción automática bloqueada, iniciando con interacción del usuario');
+                    // Si falla, inicia con cualquier interacción del usuario
+                    const startOnInteraction = () => {
+                        audio.play().then(() => {
+                            console.log('Música iniciada con interacción del usuario');
+                        });
+                        // Remover todos los listeners después del primer uso
+                        document.removeEventListener('click', startOnInteraction);
+                        document.removeEventListener('keydown', startOnInteraction);
+                        document.removeEventListener('touchstart', startOnInteraction);
+                    };
+                    
+                    document.addEventListener('click', startOnInteraction);
+                    document.addEventListener('keydown', startOnInteraction);
+                    document.addEventListener('touchstart', startOnInteraction);
+                });
+            }
+        }
+
+        // Inicializar todo
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            createComets();
+            createPetals();
+            createParticles();
+            
+            // Iniciar música automáticamente sin botón
+            autoStartAudio();
+            
+            // Efecto de cursor con estrellas
+            document.addEventListener('mousemove', function(e) {
+                if (Math.random() < 0.1) {
+                    const sparkle = document.createElement('div');
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = e.clientX + 'px';
+                    sparkle.style.top = e.clientY + 'px';
+                    sparkle.style.width = '4px';
+                    sparkle.style.height = '4px';
+                    sparkle.style.background = '#FFD700';
+                    sparkle.style.borderRadius = '50%';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.animation = 'twinkle 1s ease-out forwards';
+                    sparkle.style.zIndex = '1000';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 1000);
+                }
+            });
+        });
+
+        // Ajustar tamaño en dispositivos móviles
+        function adjustForMobile() {
+            if (window.innerWidth < 768) {
+                document.querySelector('.dedication h1').style.fontSize = '2rem';
+                document.querySelector('.sunflower').style.width = '200px';
+                document.querySelector('.sunflower').style.height = '200px';
+            }
+        }
+
+        window.addEventListener('resize', adjustForMobile);
+        adjustForMobile();
+    </script>
+</body>
+</html>
